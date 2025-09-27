@@ -1,467 +1,488 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Universal Creations — Landing Pages That Pop</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
-<style>
-  /* Reset & body */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  body {
-    min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
-    color: #f0f0f5;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle at center, #ff6ec4 0%, transparent 70%);
-    top: 20%;
-    left: -10%;
-    filter: blur(150px);
-    opacity: 0.7;
-    z-index: 0;
-    animation: float1 10s ease-in-out infinite alternate;
-  }
-  body::after {
-    content: "";
-    position: fixed;
-    width: 700px; height: 700px;
-    background: radial-gradient(circle at center, #42e695 0%, transparent 60%);
-    bottom: 10%;
-    right: -15%;
-    filter: blur(170px);
-    opacity: 0.6;
-    z-index: 0;
-    animation: float2 12s ease-in-out infinite alternate;
-  }
-  @keyframes float1 {
-    0% { transform: translateY(0) translateX(0); }
-    100% { transform: translateY(40px) translateX(30px); }
-  }
-  @keyframes float2 {
-    0% { transform: translateY(0) translateX(0); }
-    100% { transform: translateY(-30px) translateX(-40px); }
-  }
-  header {
-    text-align: center;
-    padding: 120px 20px 60px;
-    position: relative;
-    z-index: 10;
-  }
-  header h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 4.8rem;
-    color: #fff;
-    letter-spacing: 0.06em;
-    text-shadow:
-      0 0 10px #ff6ec4cc,
-      0 0 20px #42e695cc;
-    margin-bottom: 12px;
-  }
-  header p {
-    font-weight: 500;
-    font-size: 1.6rem;
-    color: #c8d6f7cc;
-    max-width: 680px;
-    margin: 0 auto;
-    letter-spacing: 0.04em;
-    text-shadow: 0 0 6px #0008;
-  }
-  main {
-    max-width: 980px;
-    margin: 0 auto 120px;
-    padding: 0 20px;
-    position: relative;
-    z-index: 10;
-  }
-  section.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 38px;
-    margin-bottom: 40px;
-  }
-  .feature-card {
-    background: linear-gradient(145deg, #293462, #546a7b);
-    border-radius: 24px;
-    padding: 38px 28px 44px;
-    color: #e3e8ff;
-    box-shadow: 0 0 26px #42e695aa;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-  .feature-card:hover {
-    transform: translateY(-16px);
-    box-shadow: 0 0 48px #ff6ec4dd, 0 0 48px #42e695dd;
-    color: #fff;
-  }
-  .feature-card h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 2;
-  }
-  .feature-card p {
-    font-weight: 500;
-    font-size: 1.12rem;
-    line-height: 1.5;
-    position: relative;
-    z-index: 2;
-  }
-  .feature-card::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    right: -60px;
-    width: 160px;
-    height: 160px;
-    background: radial-gradient(circle at center, #ff6ec4bb, transparent 80%);
-    border-radius: 50%;
-    filter: blur(40px);
-    z-index: 1;
-    transition: background 0.3s ease;
-  }
-  .feature-card:hover::before {
-    background: radial-gradient(circle at center, #42e695cc, transparent 80%);
-  }
-  section.pricing {
-    margin-bottom: 100px;
-    text-align: center;
-  }
-  section.pricing h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 2.8rem;
-    color: #fff;
-    text-shadow: 0 0 10px #ff6ec4cc, 0 0 15px #42e695cc;
-    margin-bottom: 18px;
-  }
-  .price-tag {
-    display: inline-block;
-    background: linear-gradient(145deg, #ff6ec4, #42e695);
-    padding: 32px 48px;
-    border-radius: 28px;
-    box-shadow: 0 0 40px #ff6ec4cc, 0 0 50px #42e695cc;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 2.4rem;
-    color: #121212;
-    letter-spacing: 0.1em;
-    user-select: none;
-  }
-  .cta-button {
-    display: block;
-    width: fit-content;
-    margin: 0 auto 60px;
-    padding: 18px 56px;
-    background: linear-gradient(90deg, #ff6ec4, #42e695);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.6rem;
-    color: #121212;
-    border-radius: 34px;
-    box-shadow: 0 0 40px #ff6ec4cc, 0 0 60px #42e695cc;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.4s ease, box-shadow 0.4s ease;
-    letter-spacing: 0.08em;
-  }
-  .cta-button:hover {
-    background: linear-gradient(90deg, #42e695, #ff6ec4);
-    box-shadow: 0 0 60px #ff6ec4ee, 0 0 80px #42e695ee;
-  }
-  section.form-section {
-    max-width: 600px;
-    margin: 40px auto;
-    background: #293462;
-    padding: 32px;
-    border-radius: 20px;
-    color: #f0f0f5;
-    font-family: 'Montserrat', sans-serif;
-    box-shadow: 0 0 40px #42e695aa inset;
-    position: relative;
-    z-index: 10;
-  }
-  section.form-section h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    font-weight: 700;
-    font-size: 2.4rem;
-    text-shadow: 0 0 14px #42e695cc;
-    letter-spacing: 0.06em;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  label {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #99b1f2;
-    user-select: none;
-  }
-  input, textarea {
-    border-radius: 12px;
-    border: none;
-    background: #36457f;
-    color: #f0f0f5;
-    font-size: 1rem;
-    padding: 14px 18px;
-    font-family: 'Montserrat', sans-serif;
-    box-shadow: inset 0 0 14px #42e69599;
-    transition: box-shadow 0.3s ease, background 0.3s ease;
-    resize: vertical;
-  }
-  input::placeholder, textarea::placeholder {
-    color: #7a85adaa;
-    font-style: italic;
-  }
-  input:focus, textarea:focus {
-    outline: none;
-    background: #4259a0;
-    box-shadow: 0 0 28px #42e695cc;
-    color: #fff;
-  }
-  textarea {
-    min-height: 120px;
-  }
-  button {
-    background: linear-gradient(90deg, #ff6ec4, #42e695);
-    border: none;
-    padding: 16px;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: #121212;
-    cursor: pointer;
-    box-shadow: 0 0 38px #ff6ec4cc, 0 0 60px #42e695cc;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.08em;
-    user-select: none;
-  }
-  button:hover {
-    background: linear-gradient(90deg, #42e695, #ff6ec4);
-    box-shadow: 0 0 68px #ff6ec4ff, 0 0 88px #42e695ff;
-  }
-  footer {
-    text-align: center;
-    padding: 40px 12px;
-    font-size: 0.95rem;
-    color: #8b9affcc;
-    user-select: none;
-    font-family: 'Montserrat', sans-serif;
-    z-index: 10;
-  }
-  /* Contact Button */
-  #contactButton {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    background: linear-gradient(90deg, #ff6ec4, #42e695);
-    padding: 14px 24px;
-    border-radius: 50px;
-    color: #121212;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    box-shadow: 0 0 30px #ff6ec4cc, 0 0 40px #42e695cc;
-    cursor: pointer;
-    z-index: 10000;
-    user-select: none;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-  }
-  #contactButton:hover {
-    background: linear-gradient(90deg, #42e695, #ff6ec4);
-    box-shadow: 0 0 50px #ff6ec4ff, 0 0 60px #42e695ff;
-  }
-  /* Modal Overlay */
-  #contactModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(18,18,18,0.95);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 11000;
-    padding: 20px;
-  }
-  #contactModal.active {
-    display: flex;
-  }
-  #modalContent {
-    background: #293462;
-    border-radius: 20px;
-    padding: 28px 36px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 0 48px #42e695bb;
-    position: relative;
-    color: #f0f0f5;
-  }
-  #modalContent h2 {
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 2rem;
-    text-shadow: 0 0 10px #42e695cc;
-  }
-  #closeModal {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: #f0f0f5;
-    cursor: pointer;
-    user-select: none;
-  }
-  /* Responsive */
-  @media(max-width: 720px) {
-    header h1 {
-      font-size: 3.2rem;
-    }
-    main {
-      max-width: 90vw;
-    }
-    section.features {
-      grid-template-columns: 1fr !important;
-    }
-    section.form-section {
-      margin: 30px 15px;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>माणुसकी जपणारा एक छोटासा प्रयत्न - Learn with Kalashala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8B7355;
+            --secondary: #A68A64;
+            --accent: #D2691E;
+            --light: #F5F5DC;
+            --dark: #5D4037;
+            --text: #4E342E;
+            --beige-light: #F5F5DC;
+            --beige-medium: #E6D5B8;
+            --beige-dark: #D6C6A5;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--beige-light) 0%, var(--beige-medium) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .brand-header {
+            text-align: center;
+            padding: 15px 0 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(139, 115, 85, 0.2);
+        }
+        
+        .brand-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .brand-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        
+        .brand-tagline {
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-style: italic;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .brand-tagline::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 5px;
+            opacity: 0.6;
+        }
+        
+        .bg-image {
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            filter: brightness(1.2) contrast(1.2) saturate(1.3);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--secondary);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(to right, rgba(255, 248, 225, 0.8), rgba(255, 236, 179, 0.8));
+            padding: 20px;
+            border-left: 4px solid var(--accent);
+            margin: 25px 0;
+            font-weight: 500;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .price-box {
+            flex: 1;
+            min-width: 250px;
+            background: linear-gradient(135deg, rgba(255, 250, 240, 0.8) 0%, rgba(255, 245, 225, 0.8) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .price-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .price-box h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1.3rem;
+        }
+        
+        .discounted-price {
+            color: var(--accent);
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), #E57C3D);
+            color: white;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(210, 105, 30, 0.6);
+        }
+        
+        .reasons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .reason {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, rgba(255, 250, 245, 0.8) 0%, rgba(255, 245, 235, 0.8) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .reason:hover {
+            transform: translateY(-5px);
+        }
+        
+        .reason h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+        }
+        
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .brand-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .brand-tagline::before {
+                display: none;
+            }
+            
+            .brand-tagline {
+                padding-left: 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .brand-name {
+                font-size: 1.8rem;
+            }
+            
+            .course-details {
+                flex-direction: column;
+            }
+            
+            .header-bg {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+        
+        .quote {
+            text-align: center;
+            font-style: italic;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            color: var(--dark);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .special-offer {
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), #E57C3D);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
+        }
+    </style>
 </head>
 <body>
-<header>
-  <h1>Universal Creations</h1>
-  <p>Landing Pages That Pop — Bold, Fast, Unforgettable</p>
-</header>
-
-<main>
-  <section class="features">
-    <div class="feature-card">
-      <h3>Eye-Catching Designs</h3>
-      <p>Stand out with vibrant, modern layouts that captivate your audience instantly.</p>
+    <div class="container">
+        <!-- Compact Brand Header -->
+        <div class="brand-header">
+            <div class="brand-container">
+                <div class="brand-name">Learn with Kalashala</div>
+                <div class="brand-tagline">कलेचे संवर्धन, कौशल्याचा विकास</div>
+            </div>
+        </div>
+        
+        <header>
+            <div class="header-bg">
+                <div class="bg-image" style="background-image: url('/images/1.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/2.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/3.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/4.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/5.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/6.jpeg');"></div>
+            </div>
+            
+            <div class="header-content">
+                <h1>माणुसकी जपणारा एक छोटासा प्रयत्न</h1>
+                <p class="tagline">शेतकरी कुटुंबांसाठी आपला सहभाग</p>
+            </div>
+        </header>
+        
+        <section class="content-section">
+            <h2>पाऊस हवाच असतो...</h2>
+            <p>पण जेव्हा तो आपल्या संसारावर कोसळतो, तेव्हा त्याचं रूप किती भयंकर असतं, हे फक्त त्यालाच कळतं — ज्याचं सगळं काही त्या पावसात वाहून जातं…</p>
+            
+            <p>सध्या महाराष्ट्रात अनेक शेतकरी कुटुंबं अशाच भयंकर परिस्थितीतून जात आहेत. घर नाही, कपडे नाहीत, खायला अन्न नाही… आणि डोळ्यांत फक्त एकच प्रश्न — "आता पुढे काय?"</p>
+            
+            <p>आपण त्यांच्या दुःखात थेट सहभागी होऊ शकत नाही, पण एक छोटासा हात पुढे नक्कीच करू शकतो — माणूस म्हणून, माणुसकीने…</p>
+        </section>
+        
+        <section class="content-section">
+            <h2>आमचा निर्णय</h2>
+            <p>म्हणूनच आम्ही घेतलाय एक मनापासूनचा निर्णय:</p>
+            
+            <div class="highlight">
+                "आरी वर्क + फॅब्रिक पेंटिंग" या ३ महिन्यांच्या प्री-रेकॉर्डेड मास्टर कोर्सची मूळ फी ₹१२,५०० आहे. पण ही परिस्थिती लक्षात घेता, हा कोर्स आम्ही केवळ ₹३,५०० मध्ये उपलब्ध करून देत आहोत — तो देखील फक्त काही दिवसांसाठी! (हा कोर्स मटेरियलशिवाय असेल.)
+            </div>
+            
+            <div class="special-offer">
+                विशेष ऑफर: फक्त २ दिवसांसाठी!
+            </div>
+            
+            <div class="course-details">
+                <div class="price-box">
+                    <h3>मूळ किंमत</h3>
+                    <p class="original-price">₹१२,५००</p>
+                    <p>३ महिन्यांचा मास्टर कोर्स</p>
+                </div>
+                
+                <div class="price-box">
+                    <h3>सवलत किंमत</h3>
+                    <p class="discounted-price">₹३,५००</p>
+                    <p>संपूर्ण रक्कम शेतकरी कुटुंबांसाठी</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://learnwithkalashala.com/wi2vx9pd" class="cta-button">आता नोंदणी करा</a>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>या निर्णयामागे दोन जिव्हाळ्याची कारणं</h2>
+            
+            <div class="reasons">
+                <div class="reason">
+                    <h3>👉 प्रवेशयोग्यता</h3>
+                    <p>जे लोक हा कोर्स पूर्वी जास्त फीमुळे घेऊ शकत नव्हते, त्यांच्यासाठी आता तो बजेटमध्ये उपलब्ध आहे.</p>
+                </div>
+                
+                <div class="reason">
+                    <h3>👉 सामाजिक जबाबदारी</h3>
+                    <p>या कोर्समधून जमा होणारी संपूर्ण रक्कम थेट त्या गरजू शेतकरी कुटुंबांना मदत म्हणून पोहोचवली जाईल.</p>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                🛑 आणि खास गोष्ट: ही ₹३,५०० ची फी "आज आणि उद्या", म्हणजेच फक्त २ दिवसांसाठीच असणार आहे. या कालावधीत जमा होणारी संपूर्ण रक्कम ही शेतकरी कुटुंबांना डोनेशन म्हणून दिली जाईल.
+            </div>
+            
+            <p>म्हणजे एकीकडे तुम्ही तुमचं कौशल्य वाढवण्यासाठी पाऊल टाकाल, आणि दुसरीकडे, तुमच्या हातून एखाद्या संकटात सापडलेल्या कुटुंबाला एक आधार मिळेल.</p>
+            
+            <div class="quote">
+                "थेंब थेंब साचूनच तळं भरतं…" <br>
+                "माणुसकीचं पाणी सर्वात शुद्ध असतं."
+            </div>
+        </section>
+        
+        <section class="content-section" id="enroll">
+            <h2>नोंदणी करा</h2>
+            <p>या विशेष ऑफरसाठी आत्ताच नोंदणी करा आणि शेतकरी कुटुंबांना मदत करण्यासाठी आपला सहभाग द्या.</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://learnwithkalashala.com/wi2vx9pd" class="cta-button">आता नोंदणी करा - फक्त ₹३,५००</a>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="contact-info">
+                <a href="mailto:learnwithkalashala@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>learnwithkalashala@gmail.com</span>
+                </a>
+                <a href="https://www.instagram.com/learn_with_kalashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=" target="_blank" class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>learn_with_kalashala</span>
+                </a>
+            </div>
+            <p style="margin-top: 20px;">© 2023 Learn with Kalashala. सर्व हक्क राखीव.</p>
+        </footer>
     </div>
-    <div class="feature-card">
-      <h3>Optimized For Growth</h3>
-      <p>Focused on boosting conversions with clear messaging and irresistible CTAs.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Lightning Fast Launch</h3>
-      <p>Get your landing page live quickly without sacrificing style or function.</p>
-    </div>
-  </section>
-
-  <section class="pricing">
-    <h2>Pricing</h2>
-    <div class="price-tag">Starting at $250 per landing page</div>
-  </section>
-
-  <a href="#landingFormSection" class="cta-button">Get Your Landing Page</a>
-
-  <!-- Landing Page Booking Form -->
-  <section class="form-section" id="landingFormSection">
-    <h2>Book Your Landing Page</h2>
-    <form id="landingForm" action="https://formspree.io/f/your-landing-form-id" method="POST">
-      <label for="lf_name">Full Name</label>
-      <input type="text" id="lf_name" name="name" required placeholder="Your full name" />
-
-      <label for="lf_email">Email Address</label>
-      <input type="email" id="lf_email" name="_replyto" required placeholder="you@example.com" />
-
-      <label for="lf_business">Business or Project Name</label>
-      <input type="text" id="lf_business" name="business" required placeholder="Your business name" />
-
-      <label for="lf_details">Describe Your Needs</label>
-      <textarea id="lf_details" name="details" required placeholder="Tell us about your landing page requirements..."></textarea>
-
-      <button type="submit">Send Request</button>
-    </form>
-  </section>
-</main>
-
-<!-- Contact Me Floating Button -->
-<button id="contactButton" aria-label="Contact Me">Contact Me</button>
-
-<!-- Contact Modal -->
-<div id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
-  <div id="modalContent">
-    <button id="closeModal" aria-label="Close Contact Form">&times;</button>
-    <h2 id="modalTitle">Contact Me</h2>
-    <form id="contactForm" action="https://formspree.io/f/your-contact-form-id" method="POST">
-      <label for="cf_name">Name</label>
-      <input type="text" id="cf_name" name="name" required placeholder="Your name" />
-
-      <label for="cf_email">Email</label>
-      <input type="email" id="cf_email" name="_replyto" required placeholder="your.email@example.com" />
-
-      <label for="cf_message">Message</label>
-      <textarea id="cf_message" name="message" required placeholder="Your message..."></textarea>
-
-      <button type="submit">Send</button>
-    </form>
-  </div>
-</div>
-
-<footer>
-  &copy; 2025 Universal Creations. All rights reserved.
-</footer>
-
-<script>
-  // Form submission handler for both forms
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const data = new FormData(form);
-    fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        alert('Thank you for reaching out! We will email you soon to discuss your needs in detail.');
-        form.reset();
-        // Close modal if open
-        if (form.id === 'contactForm') {
-          closeModal();
-        }
-      } else {
-        alert('Oops! There was a problem submitting your form. Please try again.');
-      }
-    }).catch(() => {
-      alert('Oops! There was a problem submitting your form. Please try again.');
-    });
-    return false;
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    // Attach submit handlers
-    const landingForm = document.getElementById('landingForm');
-    const contactForm = document.getElementById('contactForm');
-    if (landingForm) landingForm.onsubmit = handleSubmit;
-    if (contactForm) contactForm.onsubmit = handleSubmit;
-
-    // Modal controls
-   
+</body>
+</html>
