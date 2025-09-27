@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>माणुसकी जपणारा एक छोटासा प्रयत्न - Learn with Kalashala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8B7355;
+            --secondary: #A68A64;
+            --accent: #D2691E;
+            --light: #F5F5DC;
+            --dark: #5D4037;
+            --text: #4E342E;
+            --beige-light: #F5F5DC;
+            --beige-medium: #E6D5B8;
+            --beige-dark: #D6C6A5;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--beige-light) 0%, var(--beige-medium) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .brand-header {
+            text-align: center;
+            padding: 15px 0 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(139, 115, 85, 0.2);
+        }
+        
+        .brand-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .brand-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        
+        .brand-tagline {
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-style: italic;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .brand-tagline::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 5px;
+            opacity: 0.6;
+        }
+        
+        .bg-image {
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            filter: brightness(1.2) contrast(1.2) saturate(1.3);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--secondary);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(to right, rgba(255, 248, 225, 0.8), rgba(255, 236, 179, 0.8));
+            padding: 20px;
+            border-left: 4px solid var(--accent);
+            margin: 25px 0;
+            font-weight: 500;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .price-box {
+            flex: 1;
+            min-width: 250px;
+            background: linear-gradient(135deg, rgba(255, 250, 240, 0.8) 0%, rgba(255, 245, 225, 0.8) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .price-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .price-box h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1.3rem;
+        }
+        
+        .discounted-price {
+            color: var(--accent);
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), #E57C3D);
+            color: white;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(210, 105, 30, 0.6);
+        }
+        
+        .reasons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .reason {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, rgba(255, 250, 245, 0.8) 0%, rgba(255, 245, 235, 0.8) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .reason:hover {
+            transform: translateY(-5px);
+        }
+        
+        .reason h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+        }
+        
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .brand-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .brand-tagline::before {
+                display: none;
+            }
+            
+            .brand-tagline {
+                padding-left: 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .brand-name {
+                font-size: 1.8rem;
+            }
+            
+            .course-details {
+                flex-direction: column;
+            }
+            
+            .header-bg {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+        
+        .quote {
+            text-align: center;
+            font-style: italic;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            color: var(--dark);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .special-offer {
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), #E57C3D);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Compact Brand Header -->
+        <div class="brand-header">
+            <div class="brand-container">
+                <div class="brand-name">Learn with Kalashala</div>
+                <div class="brand-tagline">कलेचे संवर्धन, कौशल्याचा विकास</div>
+            </div>
+        </div>
+        
+        <header>
+            <div class="header-bg">
+                <div class="bg-image" style="background-image: url('/images/1.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/2.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/3.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/4.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/5.jpeg');"></div>
+                <div class="bg-image" style="background-image: url('/images/6.jpeg');"></div>
+            </div>
+            
+            <div class="header-content">
+                <h1>माणुसकी जपणारा एक छोटासा प्रयत्न</h1>
+                <p class="tagline">शेतकरी कुटुंबांसाठी आपला सहभाग</p>
+            </div>
+        </header>
+        
+        <section class="content-section">
+            <h2>पाऊस हवाच असतो...</h2>
+            <p>पण जेव्हा तो आपल्या संसारावर कोसळतो, तेव्हा त्याचं रूप किती भयंकर असतं, हे फक्त त्यालाच कळतं — ज्याचं सगळं काही त्या पावसात वाहून जातं…</p>
+            
+            <p>सध्या महाराष्ट्रात अनेक शेतकरी कुटुंबं अशाच भयंकर परिस्थितीतून जात आहेत. घर नाही, कपडे नाहीत, खायला अन्न नाही… आणि डोळ्यांत फक्त एकच प्रश्न — "आता पुढे काय?"</p>
+            
+            <p>आपण त्यांच्या दुःखात थेट सहभागी होऊ शकत नाही, पण एक छोटासा हात पुढे नक्कीच करू शकतो — माणूस म्हणून, माणुसकीने…</p>
+        </section>
+        
+        <section class="content-section">
+            <h2>आमचा निर्णय</h2>
+            <p>म्हणूनच आम्ही घेतलाय एक मनापासूनचा निर्णय:</p>
+            
+            <div class="highlight">
+                "आरी वर्क + फॅब्रिक पेंटिंग" या ३ महिन्यांच्या प्री-रेकॉर्डेड मास्टर कोर्सची मूळ फी ₹१२,५०० आहे. पण ही परिस्थिती लक्षात घेता, हा कोर्स आम्ही केवळ ₹३,५०० मध्ये उपलब्ध करून देत आहोत — तो देखील फक्त काही दिवसांसाठी! (हा कोर्स मटेरियलशिवाय असेल.)
+            </div>
+            
+            <div class="special-offer">
+                विशेष ऑफर: फक्त २ दिवसांसाठी!
+            </div>
+            
+            <div class="course-details">
+                <div class="price-box">
+                    <h3>मूळ किंमत</h3>
+                    <p class="original-price">₹१२,५००</p>
+                    <p>३ महिन्यांचा मास्टर कोर्स</p>
+                </div>
+                
+                <div class="price-box">
+                    <h3>सवलत किंमत</h3>
+                    <p class="discounted-price">₹३,५००</p>
+                    <p>संपूर्ण रक्कम शेतकरी कुटुंबांसाठी</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://learnwithkalashala.com/wi2vx9pd" class="cta-button">आता नोंदणी करा</a>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>या निर्णयामागे दोन जिव्हाळ्याची कारणं</h2>
+            
+            <div class="reasons">
+                <div class="reason">
+                    <h3>👉 प्रवेशयोग्यता</h3>
+                    <p>जे लोक हा कोर्स पूर्वी जास्त फीमुळे घेऊ शकत नव्हते, त्यांच्यासाठी आता तो बजेटमध्ये उपलब्ध आहे.</p>
+                </div>
+                
+                <div class="reason">
+                    <h3>👉 सामाजिक जबाबदारी</h3>
+                    <p>या कोर्समधून जमा होणारी संपूर्ण रक्कम थेट त्या गरजू शेतकरी कुटुंबांना मदत म्हणून पोहोचवली जाईल.</p>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                🛑 आणि खास गोष्ट: ही ₹३,५०० ची फी "आज आणि उद्या", म्हणजेच फक्त २ दिवसांसाठीच असणार आहे. या कालावधीत जमा होणारी संपूर्ण रक्कम ही शेतकरी कुटुंबांना डोनेशन म्हणून दिली जाईल.
+            </div>
+            
+            <p>म्हणजे एकीकडे तुम्ही तुमचं कौशल्य वाढवण्यासाठी पाऊल टाकाल, आणि दुसरीकडे, तुमच्या हातून एखाद्या संकटात सापडलेल्या कुटुंबाला एक आधार मिळेल.</p>
+            
+            <div class="quote">
+                "थेंब थेंब साचूनच तळं भरतं…" <br>
+                "माणुसकीचं पाणी सर्वात शुद्ध असतं."
+            </div>
+        </section>
+        
+        <section class="content-section" id="enroll">
+            <h2>नोंदणी करा</h2>
+            <p>या विशेष ऑफरसाठी आत्ताच नोंदणी करा आणि शेतकरी कुटुंबांना मदत करण्यासाठी आपला सहभाग द्या.</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://learnwithkalashala.com/wi2vx9pd" class="cta-button">आता नोंदणी करा - फक्त ₹३,५००</a>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="contact-info">
+                <a href="mailto:learnwithkalashala@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>learnwithkalashala@gmail.com</span>
+                </a>
+                <a href="https://www.instagram.com/learn_with_kalashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=" target="_blank" class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>learn_with_kalashala</span>
+                </a>
+            </div>
+            <p style="margin-top: 20px;">© 2023 Learn with Kalashala. सर्व हक्क राखीव.</p>
+        </footer>
+    </div>
+</body>
+</html>
